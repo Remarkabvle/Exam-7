@@ -1,0 +1,21 @@
+.intro-title {
+  font-size: 78px;
+  line-height: 75px;
+  font-weight: 500;
+  max-width: 500px;
+}
+
+.intro-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.intro-description {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 26px;
+  max-width: 424px;
+  color: #6C7275;
+}
+/*# sourceMappingURL=IntroSection.css.map */
