@@ -1,39 +1,46 @@
-import React from 'react';
-import { FaShippingFast, FaMoneyBillAlt, FaLock, FaPhone } from 'react-icons/fa';
+import React from "react";
+import { FiPhone } from "react-icons/fi";
+import { LiaShippingFastSolid, LiaMoneyBillSolid } from "react-icons/lia";
+import { IoLockClosedOutline } from "react-icons/io5";
+import "./Features.scss";
 
 const Features = () => {
   const features = [
     {
-      icon: <FaShippingFast />,
-      title: 'Free Shipping',
-      description: 'Order above $200',
+      icon: <LiaShippingFastSolid />,
+      title: "Free Shipping",
+      description: "Order above $200",
     },
     {
-      icon: <FaMoneyBillAlt />,
-      title: 'Money-back',
-      description: '30 days guarantee',
+      icon: <LiaMoneyBillSolid />,
+      title: "Money-back",
+      description: "30 days guarantee",
     },
     {
-      icon: <FaLock />,
-      title: 'Secure Payments',
-      description: 'Secured by Stripe',
+      icon: <IoLockClosedOutline />,
+      title: "Secure Payments",
+      description: "Secured by Stripe",
     },
     {
-      icon: <FaPhone />,
-      title: '24/7 Support',
-      description: 'Phone and Email support',
+      icon: <FiPhone />,
+      title: "24/7 Support",
+      description: "Phone and Email support",
     },
   ];
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'space-around', padding: '20px', backgroundColor: '#f9f9f9' }}>
-      {features.map((feature, index) => (
-        <div key={index} style={{ textAlign: 'center', padding: '10px' }}>
-          <div style={{ fontSize: '24px', marginBottom: '10px' }}>{feature.icon}</div>
-          <h3 style={{ margin: '5px 0' }}>{feature.title}</h3>
-          <p style={{ color: '#555' }}>{feature.description}</p>
-        </div>
-      ))}
+    <div>
+      <div className="container features__cards-container">
+        {features.map((feature, index) => (
+          <div key={index} className="features__card">
+            <div className="features__card__icon">{feature.icon}</div>
+            <div className="features__card__info">
+              <h3>{feature.title}</h3>
+              <p>{feature.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

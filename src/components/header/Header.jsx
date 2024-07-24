@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { FaSearch, FaUser, FaShoppingBag, FaBars, FaTimes } from "react-icons/fa";
+import { FaSearch, FaUser, FaShoppingBag, FaBars, FaTimes, FaArrowUp } from "react-icons/fa";
 import "./Navbar.scss";
 import logo from "../../assets/logo.svg";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [backToTopVisible, setBackToTopVisible] = useState(false);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -14,6 +15,23 @@ const Navbar = () => {
   const closeMenu = () => {
     setMenuOpen(false);
   };
+
+  const handleScroll = () => {
+    if (window.scrollY > 300) {
+      setBackToTopVisible(true);
+    } else {
+      setBackToTopVisible(false);
+    }
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <>
@@ -60,6 +78,11 @@ const Navbar = () => {
         </div>
       </nav>
       {menuOpen && <div className="overlay" onClick={closeMenu}></div>}
+      {backToTopVisible && (
+        <div className="back-to-top" onClick={scrollToTop}>
+          <FaArrowUp className="icon" />
+        </div>
+      )}
     </>
   );
 };

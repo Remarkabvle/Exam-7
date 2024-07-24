@@ -1,4 +1,3 @@
-// IntroSection.js
 import React from "react";
 import "./IntroSection.css";
 import sofa1 from '../../assets/s.png';
@@ -25,7 +24,7 @@ const data = [
 
 const IntroSection = () => {
   return (
-    <div>
+    <div className="intro">
       <div className="container intro-container">
         <div>
           <p className="intro-title">Simply Unique Simply Better.</p>
@@ -37,14 +36,14 @@ const IntroSection = () => {
           </p>
         </div>
       </div>
-      <div className="card-container container">
+      <div className="room__cards container">
         {data.map((item, index) => (
-          <div key={index} className="card" style={{ backgroundImage: `url(${item.image})` }}>
-            <div className="card-content">
-              <h2 className="card-title">{item.title}</h2>
-              <a href={item.link} className="card-button">
-                Shop Now →
-              </a>
+          <div key={index} className={`room__card room__card--${index + 1}`} style={{ backgroundImage: `url(${item.image})` }}>
+            <div className="room__card__info">
+              <h3>{item.title}</h3>
+              <p>
+                <a href={item.link} className="card-button">Shop Now →</a>
+              </p>
             </div>
           </div>
         ))}

@@ -6,6 +6,7 @@ import Features from '../../components/features/Features'
 import PromoBanner from '../../components/PromoBanner/PromoBanner'
 import Articles from '../../components/Articles/Articles'
 import Newsletter from '../../components/Newsletter/Newsletter'
+import Product from '../../components/product/Product'
 
 const Home = () => {
   return (
@@ -14,6 +15,7 @@ const Home = () => {
       <IntroSection/>
       <Features/>
       <PromoBanner/>
+      <Product/>
       <Articles/>
       <Newsletter/>
     </div>

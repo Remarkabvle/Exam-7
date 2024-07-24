@@ -1,51 +1,91 @@
-.newsletter {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #f9f9f9;
+.Newsletter {
+  background: url(../../assets/n1.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 350px;
+  margin: 20px auto 0;
+  display: grid;
+  place-items: center;
+
+  &__content {
+    text-align: center;
     padding: 20px;
     border-radius: 8px;
   }
-  
-  .newsletter-content {
-    max-width: 60%;
+
+  &__title {
+    font-family: Poppins;
+    font-size: 40px;
+    font-weight: 500;
+    letter-spacing: -0.4px;
+    color: #141718;
   }
-  
-  .newsletter-content h2 {
-    font-size: 2em;
-    margin-bottom: 10px;
+
+  &__desc {
+    font-family: Inter;
+    font-size: 18px;
+    font-weight: 400;
+    color: #141718;
   }
-  
-  .newsletter-content p {
-    font-size: 1.2em;
-    margin-bottom: 20px;
+
+  &__form {
+    min-width: 500px !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15px;
   }
-  
-  .newsletter-form {
+
+  &__inputWrapper {
+    position: relative;
     display: flex;
     align-items: center;
-    border-top: 1px solid #ccc;
-    padding-top: 10px;
+    margin-bottom: 10px;
   }
-  
-  .newsletter-form input {
-    flex: 1;
-    padding: 10px;
+
+  &__icon {
+    position: absolute;
+    left: 10px;
+    color: gray;
+    font-size: 20px;
+  }
+
+  &__input {
     border: none;
+    border-bottom: 1px solid gray;
     outline: none;
+    background-color: transparent;
+    padding: 8px 8px 8px 32px;
+    width: 100%;
+    max-width: 300px;
   }
-  
-  .newsletter-form button {
-    padding: 10px 20px;
+
+  &__button {
     border: none;
-    background-color: #000;
-    color: #fff;
+    padding: 10px 20px;
+    background: transparent;
     cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    border-bottom: 1px solid gray;
+    margin-bottom: 5px;
   }
-  
-  .newsletter-image img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
+
+  &__image {
+    display: none; 
   }
-  
+
+  @media (max-width: 400px) {
+    &__title {
+      font-size: 30px;
+    }
+
+    &__desc {
+      font-size: 16px;
+    }
+    input{
+      max-width: 350px !important;
+    }
+  }
+}
