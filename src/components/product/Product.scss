@@ -47,13 +47,42 @@
 
   &__card {
     background-color: #fff;
-    border: 1px solid #eaeaea;
-    border-radius: 8px;
     overflow: hidden;
-    transition: box-shadow 0.3s ease;
+    transition: 0.5s;
+    position: relative;
+
+    &.skeleton {
+      .products-section__card__image-container {
+        .skeleton-image {
+          width: 100%;
+          height: 180px;
+          background-color: #e0e0e0;
+          animation: shimmer 1.5s infinite;
+        }
+      }
+
+      .products-section__card__info {
+        .skeleton-title, .skeleton-price {
+          height: 20px;
+          background-color: #e0e0e0;
+          margin-top: 10px;
+          animation: shimmer 1.5s infinite;
+        }
+        
+        .skeleton-title {
+          width: 80%;
+        }
+
+        .skeleton-price {
+          width: 50%;
+        }
+      }
+    }
 
     &:hover {
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      .products-section__card__icons {
+        opacity: 1;
+      }
     }
 
     &__image-container {
@@ -80,12 +109,42 @@
       }
     }
 
+    &__icons {
+      display: flex;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      gap: 15px;
+      transition: opacity 0.3s ease-in-out;
+      opacity: 0;
+
+      .icon {
+        background: white;
+        border-radius: 50%;
+        padding: 5px;
+        font-size: 30px;
+        color: #007bff;
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: 0.3s;
+
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+
+      .icon.filled {
+        color: #e74c3c;
+      }
+    }
+
     &__info {
       padding: 15px;
 
       &__title {
         font-family: 'Inter', sans-serif;
-        font-size: 18px;
+        font-size: 16px;
         font-weight: 600;
         color: #141718;
         display: -webkit-box;
@@ -97,7 +156,7 @@
 
       &__price {
         font-family: 'Inter', sans-serif;
-        font-size: 16px;
+        font-size: 14px;
         font-weight: 600;
         color: #141718;
       }
@@ -128,10 +187,19 @@
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s;
 
     &:hover {
-      background-color: #333;
+      background-color: #007bff;
     }
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 100% 0;
   }
 }

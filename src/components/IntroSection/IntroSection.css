@@ -1,5 +1,4 @@
 .intro-title {
-  margin-top: 30px !important;
   font-size: 78px;
   line-height: 75px;
   font-weight: 500;
@@ -100,5 +99,32 @@ h3 {
   font-size: 34px;
   line-height: 38px;
   margin-bottom: 5px;
+}
+
+@media (max-width: 1200px) {
+  .intro-title {
+    font-size: 60px;
+    line-height: 58px;
+  }
+}
+@media (max-width: 768px) {
+  .intro-title {
+    font-size: 48px;
+    line-height: 46px;
+  }
+  .intro-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+@media (max-width: 480px) {
+  .intro-title {
+    font-size: 36px;
+    line-height: 34px;
+  }
+  .intro-container {
+    align-items: center;
+    text-align: center;
+  }
 }
 /*# sourceMappingURL=IntroSection.css.map */

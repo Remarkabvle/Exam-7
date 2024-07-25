@@ -1,52 +1,131 @@
-.features__cards-container {
-  margin-top: 35px;
+.intro-title {
+  margin-top: 30px !important;
+  font-size: 78px;
+  line-height: 75px;
+  font-weight: 500;
+  max-width: 500px;
+}
+
+.intro-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.intro-description {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 26px;
+  max-width: 424px;
+  color: #6c7275;
+}
+
+.intro .room__cards {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
   gap: 20px;
 }
-.features__card {
-  background-color: #f3f5f7;
-  border-radius: 5px;
-  padding: 30px 20px;
-  min-height: 200px;
+.intro .room__card {
+  margin-top: 30px !important;
+  padding: 20px;
+  min-height: 350px;
+  border-radius: 10px;
+  background-size: cover;
+  background-position: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
 }
-.features__card__icon {
-  font-size: 43px;
-  color: #141718;
-  margin-bottom: 15px;
+.intro .room__card__info {
+  padding: 20px;
+  border-radius: 10px;
 }
-.features__card__info h3 {
-  font-family: "Poppins", sans-serif;
-  font-size: 24px;
-  font-weight: 500;
-  color: #141718;
-  margin: 0 0 10px;
+.intro .room__card--1 {
+  grid-column: 1;
+  grid-row: 1/3;
 }
-.features__card__info p {
-  font-family: "Poppins", sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  color: #6c7275;
-  margin: 0;
+.intro .room__card--2, .intro .room__card--3 {
+  flex-direction: column-reverse;
+  align-items: flex-start;
+  grid-column: 2;
 }
-@media (max-width: 1080px) {
-  .features__cards-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .features__card__info h3 {
-    font-size: 20px;
-  }
-  .features__card__info p {
-    font-size: 14px;
-  }
+.intro .room__card--2 {
+  grid-row: 1;
 }
-@media (max-width: 460px) {
-  .features__cards-container {
+.intro .room__card--3 {
+  grid-row: 2;
+}
+@media (max-width: 950px) {
+  .intro .room__cards {
     grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .intro .room__card {
+    height: 250px;
+  }
+  .intro .room__card--1, .intro .room__card--2, .intro .room__card--3 {
+    grid-column: 1;
+    grid-row: auto;
+  }
+}
+.intro .room h3 {
+  font-family: Poppins;
+  font-size: 34px;
+  font-weight: 500;
+  line-height: 38px;
+  letter-spacing: -0.6px;
+  text-align: left;
+}
+.intro .room p {
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 28px;
+  letter-spacing: -0.4px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.intro .room .card-button {
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+h3 {
+  font-weight: 500;
+  font-size: 34px;
+  line-height: 38px;
+  margin-bottom: 5px;
+}
+
+@media (max-width: 1200px) {
+  .intro-title {
+    font-size: 60px;
+    line-height: 58px;
+  }
+}
+@media (max-width: 768px) {
+  .intro-title {
+    font-size: 48px;
+    line-height: 46px;
+  }
+  .intro-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+@media (max-width: 480px) {
+  .intro-title {
+    font-size: 36px;
+    line-height: 34px;
+  }
+  .intro-container {
+    align-items: center;
+    text-align: center;
   }
 }
 /*# sourceMappingURL=Features.css.map */

@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { FaSearch, FaUser, FaShoppingBag, FaBars, FaTimes, FaArrowUp } from "react-icons/fa";
+import {
+  FaSearch,
+  FaUser,
+  FaShoppingBag,
+  FaBars,
+  FaTimes,
+  FaArrowUp,
+} from "react-icons/fa";
 import "./Navbar.scss";
 import logo from "../../assets/logo.svg";
 
@@ -59,8 +66,21 @@ const Navbar = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/contact" activeClassName="active" onClick={closeMenu}>
+              <NavLink
+                to="/contact"
+                activeClassName="active"
+                onClick={closeMenu}
+              >
                 Contact Us
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/wishlist"
+                activeClassName="active"
+                onClick={closeMenu}
+              >
+                Wishlist
               </NavLink>
             </li>
           </ul>
@@ -68,11 +88,15 @@ const Navbar = () => {
             <FaSearch className="icon" />
             <FaUser className="icon" />
             <div className="icon-bag">
-              <FaShoppingBag className="icon" />
+              <FaShoppingBag className="icont" />
               <span className="badge">2</span>
             </div>
             <div className="hamburger" onClick={toggleMenu}>
-              {menuOpen ? <FaTimes className="icon" /> : <FaBars className="icon" />}
+              {menuOpen ? (
+                <FaTimes className="icont" />
+              ) : (
+                <FaBars className="icont" />
+              )}
             </div>
           </div>
         </div>

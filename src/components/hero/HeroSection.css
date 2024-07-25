@@ -3,7 +3,6 @@
   width: 100%;
   height: 100vh;
   overflow: hidden;
-  margin-bottom: 10px !important;
 }
 .hero-section .image-slider {
   position: relative;
@@ -59,5 +58,55 @@
 }
 .hero-section .dots .dot.active {
   background-color: rgb(255, 255, 255);
+}
+
+@media (max-width: 1200px) {
+  .hero-section {
+    height: 80vh; /* Adjust height for smaller screens */
+  }
+}
+@media (max-width: 768px) {
+  .hero-section {
+    height: 60vh; /* Adjust height for smaller screens */
+  }
+  .hero-section .image-slider .arrow {
+    font-size: 1.5rem;
+    padding: 8px;
+  }
+  .hero-section .image-slider .arrow.left-arrow {
+    left: 10px;
+  }
+  .hero-section .image-slider .arrow.right-arrow {
+    right: 10px;
+  }
+  .hero-section .dots {
+    gap: 5px;
+  }
+  .hero-section .dots .dot {
+    width: 8px;
+    height: 8px;
+  }
+}
+@media (max-width: 480px) {
+  .hero-section {
+    height: 50vh; /* Adjust height for smaller screens */
+  }
+  .hero-section .image-slider .arrow {
+    font-size: 1rem;
+    padding: 6px;
+  }
+  .hero-section .image-slider .arrow.left-arrow {
+    left: 5px;
+  }
+  .hero-section .image-slider .arrow.right-arrow {
+    right: 5px;
+  }
+  .hero-section .dots {
+    gap: 3px;
+  }
+  .hero-section .dots .dot {
+    width: 6px;
+    height: 6px;
+  }
 }
 /*# sourceMappingURL=HeroSection.css.map */

@@ -19,6 +19,10 @@ const SingleProduct = () => {
     dispatch(fetchProductById(productId));
   }, [dispatch, productId]);
 
+  const handleImageError = (e) => {
+    e.target.src = 'https://via.placeholder.com/600'; // Zaxira rasm manzili
+  };
+
   let content;
 
   if (status === 'loading') {
@@ -28,7 +32,12 @@ const SingleProduct = () => {
       <div className="product-details-container container">
         <div className="product-details">
           <div className="product-images">
-            <img src={product.images[choose]} alt={product.title} className="main-image" />
+            <img 
+              src={product.images[choose]} 
+              alt={product.title} 
+              className="main-image" 
+              onError={handleImageError}
+            />
             <div className="thumbnail-images">
               {product.images.map((image, index) => (
                 <img
@@ -37,6 +46,7 @@ const SingleProduct = () => {
                   alt={product.title}
                   className={`thumbnail ${choose === index ? 'active' : ''}`}
                   onClick={() => setChoose(index)}
+                  onError={handleImageError}
                 />
               ))}
             </div>
