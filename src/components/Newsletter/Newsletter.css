@@ -78,4 +78,10 @@
     max-width: 350px !important;
   }
 }
+
+@media (max-width: 560px) {
+  .Newsletter {
+    display: none;
+  }
+}
 /*# sourceMappingURL=Newsletter.css.map */

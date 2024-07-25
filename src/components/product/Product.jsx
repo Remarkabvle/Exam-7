@@ -10,7 +10,7 @@ const Product = () => {
   const status = useSelector(getProductsStatus);
   const error = useSelector(getProductsError);
 
-  const [visibleProducts, setVisibleProducts] = useState(6); // Boshlang'ich limit
+  const [visibleProducts, setVisibleProducts] = useState(6);
 
   useEffect(() => {
     if (status === 'idle') {
@@ -19,7 +19,7 @@ const Product = () => {
   }, [status, dispatch]);
 
   const handleSeeMore = () => {
-    setVisibleProducts(prevVisibleProducts => prevVisibleProducts + 6); // Har safar 6 ta mahsulot qo'shish
+    setVisibleProducts(prevVisibleProducts => prevVisibleProducts + 6);
   };
 
   let content;
@@ -28,18 +28,21 @@ const Product = () => {
     content = <p>Yuklanmoqda...</p>;
   } else if (status === 'succeeded') {
     content = products.slice(0, visibleProducts).map(product => (
-      <div key={product.id} className="product-card">
+      <div key={product.id} className="products-section__card">
         <Link to={`/product/${product.id}`}>
-          <img src={product.images[0]} alt={product.title} className="product-image" />
+          <div className="products-section__card__image-container">
+            <img src={product.images[0]} alt={product.title} className="product-image" />
+            {product.isNew && <span className="products-section__card__image-container__badge">New</span>}
+          </div>
         </Link>
-        <div className="product-details">
-          <div className="product-rating">
+        <div className="products-section__card__info">
+          <div className="products-section__card__info__rating">
             {Array(Math.round(product.rating)).fill().map((_, i) => (
               <span key={i} className="star">&#9733;</span>
             ))}
           </div>
-          <h2 className="product-name">{product.title}</h2>
-          <p className="product-price">${product.price}</p>
+          <h2 className="products-section__card__info__title">{product.title}</h2>
+          <p className="products-section__card__info__price">${product.price}</p>
         </div>
       </div>
     ));
@@ -48,8 +51,12 @@ const Product = () => {
   }
 
   return (
-    <div className="shop-container">
-      <div className="product-list">
+    <div className="products-section container">
+      <div className="products-section__header">
+        <h1 className="products-section__header__title">Mahsulotlar</h1>
+        <p className="products-section__header__description">Eng yaxshi mahsulotlar</p>
+      </div>
+      <div className="products-section__grid">
         {content}
       </div>
       {visibleProducts < products.length && (

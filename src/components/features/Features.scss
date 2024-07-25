@@ -1,10 +1,9 @@
 .features {
   &__cards-container {
-    margin-top: 40px;
-    margin-top: 35px !important;
+    margin-top: 35px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-gap: 20px;
+    gap: 20px;
   }
 
   &__card {
@@ -12,32 +11,40 @@
     border-radius: 5px;
     padding: 30px 20px;
     min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 
     &__icon {
       font-size: 43px;
-      margin-bottom: 10px;
+      color: #141718;
+      margin-bottom: 15px;
     }
 
     &__info {
       h3 {
-        font-family: Poppins;
+        font-family: 'Poppins', sans-serif;
         font-size: 24px;
         font-weight: 500;
-        text-align: left;
         color: #141718;
-        padding: 10px 0px;
+        margin: 0 0 10px;
       }
       p {
-        font-family: Poppins;
+        font-family: 'Poppins', sans-serif;
         font-size: 16px;
         font-weight: 400;
-        text-align: left;
         color: #6c7275;
+        margin: 0;
       }
     }
   }
 
   @media (max-width: 1080px) {
+    &__cards-container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
     &__card {
       &__info {
         h3 {
@@ -50,14 +57,8 @@
     }
   }
 
-  @media (max-width: 930px) {
-    &__cards {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
   @media (max-width: 460px) {
-    &__cards {
+    &__cards-container {
       grid-template-columns: 1fr;
     }
   }
