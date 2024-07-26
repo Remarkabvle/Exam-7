@@ -88,8 +88,13 @@ const Navbar = () => {
             <FaSearch className="icon" />
             <FaUser className="icon" />
             <div className="icon-bag">
-              <FaShoppingBag className="icont" />
-              <span className="badge">2</span>
+              <NavLink
+                to="/cart"
+                activeClassName="active"
+                onClick={closeMenu}
+              >
+                <FaShoppingBag className="icont" />
+              </NavLink>
             </div>
             <div className="hamburger" onClick={toggleMenu}>
               {menuOpen ? (

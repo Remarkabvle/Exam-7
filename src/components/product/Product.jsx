@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { fetchProducts, selectAllProducts, getProductsStatus, getProductsError } from '../../features/products/productsSlice';
 import { FaShoppingCart, FaRegHeart, FaHeart } from 'react-icons/fa';
 import { addToWishlist, removeFromWishlist, selectWishlist } from '../../features/wishlist/wishlistSlice';
+import { addToCart } from '../../features/cart/cartSlice';
 import './Product.scss';
 
 const Product = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const products = useSelector(selectAllProducts);
   const status = useSelector(getProductsStatus);
   const error = useSelector(getProductsError);
@@ -38,7 +40,8 @@ const Product = () => {
   };
 
   const handleAddToCart = (product) => {
-    // Handle adding to cart here
+    dispatch(addToCart(product)); // Dispatch the addToCart action
+    navigate('/cart'); // Navigate to the cart page
   };
 
   let content;
