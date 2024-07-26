@@ -1,55 +1,162 @@
-.cart {
-    max-width: 800px;
-    margin: 0 auto;
+.shopping-cart {
+    display: flex;
+    flex-direction: column;
     padding: 20px;
   
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-  
-    .cart-items {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
-    }
-  
-    .cart-item {
+    &__container {
       display: flex;
-      align-items: center;
-      border: 1px solid #eee;
-      padding: 15px;
+      flex-direction: row; // Change to row for side-by-side layout
+      justify-content: space-between; // Space between content and summary
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 20px;
+    }
   
-      img {
-        width: 100px;
-        height: auto;
-        margin-right: 20px;
+    &__content {
+      flex: 2; // Take more space for the product list
+    }
+  
+    &__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 10px;
+      margin-bottom: 10px;
+  
+      h2 {
+        margin: 0;
+      }
+    }
+  
+    &__list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    &__item {
+      display: flex;
+      gap: 10px;
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+  
+      &__image {
+        img {
+          width: 100px;
+          height: 100px;
+          object-fit: cover;
+        }
       }
   
-      .cart-item-info {
-        flex: 1;
+      .shopping-cart__info {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
   
         h2 {
-          font-size: 1.2rem;
           margin: 0;
+          font-size: 18px;
         }
   
         p {
-          font-size: 1rem;
-          color: #333;
           margin: 5px 0;
         }
   
-        button {
-          background-color: #333;
-          color: #fff;
+        .shopping-cart__quantity {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+  
+          button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+  
+            &:hover {
+              color: #ff6347;
+            }
+          }
+  
+          span {
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+          }
+        }
+  
+        .shopping-cart__remove {
+          background: none;
           border: none;
-          padding: 5px 10px;
+          color: #ff6347;
           cursor: pointer;
+          display: flex;
+          align-items: center;
+          gap: 5px;
   
           &:hover {
-            background-color: #555;
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  
+    &__summary {
+      flex: 1; // Take less space for the summary
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      max-height: 476px !important;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      margin-left: 20px; // Add margin to separate from the product list
+  
+      .cart-summary {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        max-height: 476px;
+        h2 {
+          margin: 0;
+          border-bottom: 1px solid #ddd;
+          padding-bottom: 10px;
+        }
+  
+        &__shipping {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+  
+          div {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          }
+        }
+  
+        &__total {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          border-top: 1px solid #ddd;
+          padding-top: 10px;
+        }
+  
+        &__checkout-button {
+          background-color: #000;
+          color: #fff;
+          border: none;
+          padding: 10px;
+          cursor: pointer;
+          border-radius: 4px;
+          font-size: 16px;
+  
+          &:hover {
+            background-color: #333;
           }
         }
       }

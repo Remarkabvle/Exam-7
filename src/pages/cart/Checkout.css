@@ -1,0 +1,242 @@
+.checkout-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+.checkout-container .checkout-left,
+.checkout-container .checkout-right {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.checkout-container .checkout-left {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.checkout-container .checkout-left-top,
+.checkout-container .checkout-left-middle,
+.checkout-container .checkout-left-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.checkout-container .checkout-left-top h2,
+.checkout-container .checkout-left-middle h2,
+.checkout-container .checkout-left-bottom h2 {
+  margin-bottom: 10px;
+  font-size: 24px;
+  font-weight: bold;
+}
+.checkout-container .checkout-left-top form,
+.checkout-container .checkout-left-middle form,
+.checkout-container .checkout-left-bottom form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.checkout-container .checkout-left-top form .checkout-left-top-info,
+.checkout-container .checkout-left-top form .checkout-left-middle-info,
+.checkout-container .checkout-left-top form .checkout-left-bottom-info,
+.checkout-container .checkout-left-middle form .checkout-left-top-info,
+.checkout-container .checkout-left-middle form .checkout-left-middle-info,
+.checkout-container .checkout-left-middle form .checkout-left-bottom-info,
+.checkout-container .checkout-left-bottom form .checkout-left-top-info,
+.checkout-container .checkout-left-bottom form .checkout-left-middle-info,
+.checkout-container .checkout-left-bottom form .checkout-left-bottom-info {
+  display: flex;
+  gap: 10px;
+}
+.checkout-container .checkout-left-top form .checkout-left-top-info label,
+.checkout-container .checkout-left-top form .checkout-left-middle-info label,
+.checkout-container .checkout-left-top form .checkout-left-bottom-info label,
+.checkout-container .checkout-left-middle form .checkout-left-top-info label,
+.checkout-container .checkout-left-middle form .checkout-left-middle-info label,
+.checkout-container .checkout-left-middle form .checkout-left-bottom-info label,
+.checkout-container .checkout-left-bottom form .checkout-left-top-info label,
+.checkout-container .checkout-left-bottom form .checkout-left-middle-info label,
+.checkout-container .checkout-left-bottom form .checkout-left-bottom-info label {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+}
+.checkout-container .checkout-left-top form label,
+.checkout-container .checkout-left-middle form label,
+.checkout-container .checkout-left-bottom form label {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+}
+.checkout-container .checkout-left-top form label input,
+.checkout-container .checkout-left-top form label select,
+.checkout-container .checkout-left-middle form label input,
+.checkout-container .checkout-left-middle form label select,
+.checkout-container .checkout-left-bottom form label input,
+.checkout-container .checkout-left-bottom form label select {
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+.checkout-container .checkout-left-top form label select,
+.checkout-container .checkout-left-middle form label select,
+.checkout-container .checkout-left-bottom form label select {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background: #fff url('data:image/svg+xml;utf8,<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 9l-7 7-7-7"></path></svg>') no-repeat right 10px center;
+  background-size: 16px;
+}
+.checkout-container .checkout-left-top form .checkout-left-middle-check,
+.checkout-container .checkout-left-top form .checkout-left-bottom-check,
+.checkout-container .checkout-left-middle form .checkout-left-middle-check,
+.checkout-container .checkout-left-middle form .checkout-left-bottom-check,
+.checkout-container .checkout-left-bottom form .checkout-left-middle-check,
+.checkout-container .checkout-left-bottom form .checkout-left-bottom-check {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.checkout-container .checkout-left-top form .checkout-left-middle-check input[type=radio],
+.checkout-container .checkout-left-top form .checkout-left-bottom-check input[type=radio],
+.checkout-container .checkout-left-middle form .checkout-left-middle-check input[type=radio],
+.checkout-container .checkout-left-middle form .checkout-left-bottom-check input[type=radio],
+.checkout-container .checkout-left-bottom form .checkout-left-middle-check input[type=radio],
+.checkout-container .checkout-left-bottom form .checkout-left-bottom-check input[type=radio] {
+  margin: 0;
+}
+.checkout-container .checkout-left-btn {
+  align-self: flex-start;
+  padding: 10px 20px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.checkout-container .checkout-left-btn:hover {
+  background-color: #333;
+}
+.checkout-container .checkout-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.checkout-container .checkout-right .checkout-card {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  align-items: center;
+}
+.checkout-container .checkout-right .checkout-card .checkout-card-left {
+  display: flex;
+  gap: 10px;
+}
+.checkout-container .checkout-right .checkout-card .checkout-card-left .checkout-card-img {
+  width: 60px;
+  height: 60px;
+}
+.checkout-container .checkout-right .checkout-card .checkout-card-left .checkout-card-img img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 5px;
+}
+.checkout-container .checkout-right .checkout-card .checkout-card-left .checkout-card-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.checkout-container .checkout-right .checkout-card .checkout-card-left .checkout-card-info p {
+  font-size: 14px;
+  margin: 0;
+}
+.checkout-container .checkout-right .checkout-card .checkout-card-left .checkout-card-info .checkout-card-info-btns {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.checkout-container .checkout-right .checkout-card .checkout-card-left .checkout-card-info .checkout-card-info-btns button {
+  background: none;
+  border: 1px solid #ccc;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.checkout-container .checkout-right .checkout-card .checkout-card-left .checkout-card-info .checkout-card-info-btns button:hover {
+  background-color: #f0f0f0;
+}
+.checkout-container .checkout-right .checkout-card .checkout-card-left .checkout-card-info .checkout-card-info-btns button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+.checkout-container .checkout-right .checkout-card .checkout-card-left .checkout-card-info .checkout-card-info-btns button svg {
+  width: 12px;
+  height: 12px;
+}
+.checkout-container .checkout-right .checkout-card .checkout-card-right p {
+  font-size: 14px;
+  font-weight: bold;
+  margin: 0;
+}
+.checkout-container .checkout-right .checkout-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.checkout-container .checkout-right .checkout-bottom .checkout-bottom-form {
+  display: flex;
+  gap: 10px;
+}
+.checkout-container .checkout-right .checkout-bottom .checkout-bottom-form input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.checkout-container .checkout-right .checkout-bottom .checkout-bottom-form button {
+  padding: 10px 20px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.checkout-container .checkout-right .checkout-bottom .checkout-bottom-form button:hover {
+  background-color: #333;
+}
+.checkout-container .checkout-right .checkout-bottom .checkout-bottom-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.checkout-container .checkout-right .checkout-bottom .checkout-bottom-info .checkout-bottom-unit {
+  display: flex;
+  justify-content: space-between;
+}
+.checkout-container .checkout-right .checkout-bottom .checkout-bottom-info .checkout-bottom-unit p {
+  margin: 0;
+}
+.checkout-container .checkout-right .checkout-bottom .checkout-bottom-info .checkout-bottom-unit span {
+  font-weight: bold;
+}
+.checkout-container .checkout-right .checkout-bottom .checkout-bottom-info .checkout-bottom-unit:last-child h2 {
+  font-size: 18px;
+  margin: 0;
+}
+/*# sourceMappingURL=Checkout.css.map */
