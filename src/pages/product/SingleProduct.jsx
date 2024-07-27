@@ -1,11 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
-import { fetchProductById, selectProductById, getProductsStatus, getProductsError } from '../../features/products/productsSlice';
-import { AiOutlineHeart, AiFillHeart, AiFillStar, AiOutlineClose } from 'react-icons/ai';
-import { addToWishlist, removeFromWishlist, selectWishlist } from '../../features/wishlist/wishlistSlice';
-import { addToCart, selectCart, incrementCart, decrementCart } from '../../features/cart/cartSlice';
-import { Box, Button, Typography, IconButton, TextField } from '@mui/material';
+import {
+  fetchProductById,
+  selectProductById,
+  getProductsStatus,
+  getProductsError,
+} from '../../features/products/productsSlice';
+import {
+  AiOutlineHeart,
+  AiFillHeart,
+  AiFillStar,
+  AiOutlineClose,
+} from 'react-icons/ai';
+import {
+  addToWishlist,
+  removeFromWishlist,
+  selectWishlist,
+} from '../../features/wishlist/wishlistSlice';
+import {
+  addToCart,
+  selectCart,
+  incrementCart,
+  decrementCart,
+} from '../../features/cart/cartSlice';
+import { Box, Button, Typography, IconButton, Skeleton } from '@mui/material';
 import ModalReview from './ReviewForm';
 import './SingleProduct.scss';
 
@@ -13,7 +32,7 @@ const SingleProduct = () => {
   const { productId } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const product = useSelector(state => selectProductById(state, productId));
+  const product = useSelector((state) => selectProductById(state, productId));
   const status = useSelector(getProductsStatus);
   const error = useSelector(getProductsError);
   const wishlist = useSelector(selectWishlist);
@@ -23,8 +42,6 @@ const SingleProduct = () => {
   const [showCartNotification, setShowCartNotification] = useState(false);
   const [cartNotificationProduct, setCartNotificationProduct] = useState(null);
   const [quantity, setQuantity] = useState(0);
-  const [review, setReview] = useState('');
-  const [rating, setRating] = useState(0);
   const [reviews, setReviews] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -33,7 +50,7 @@ const SingleProduct = () => {
   }, [dispatch, productId]);
 
   useEffect(() => {
-    const cartProduct = cart.find(item => item.id === productId);
+    const cartProduct = cart.find((item) => item.id === productId);
     setQuantity(cartProduct ? cartProduct.quantity : 0);
   }, [cart, productId]);
 
@@ -42,7 +59,7 @@ const SingleProduct = () => {
   };
 
   const handleToggleWishlist = (product) => {
-    if (wishlist.some(item => item.id === product.id)) {
+    if (wishlist.some((item) => item.id === product.id)) {
       dispatch(removeFromWishlist(product.id));
     } else {
       dispatch(addToWishlist(product));
@@ -59,7 +76,7 @@ const SingleProduct = () => {
     setShowCartNotification(true);
     setTimeout(() => {
       setShowCartNotification(false);
-    }, 3000); // Hide notification after 3 seconds
+    }, 3000);
   };
 
   const handleQuantityChange = (change) => {
@@ -89,16 +106,30 @@ const SingleProduct = () => {
   let content;
 
   if (status === 'loading') {
-    content = <p>Loading...</p>;
+    content = (
+      <Box className="product-details-container container">
+        <Box className="product-details">
+          <Skeleton variant="rectangular" width={600} height={400} />
+          <Box className="product-info">
+            <Skeleton variant="text" width={200} height={40} />
+            <Skeleton variant="text" width={100} height={30} />
+            <Skeleton variant="text" width={300} height={60} />
+            <Skeleton variant="text" width={150} height={30} />
+            <Skeleton variant="text" width={100} height={30} />
+          </Box>
+        </Box>
+        <Skeleton variant="rectangular" width="100%" height={100} />
+      </Box>
+    );
   } else if (status === 'succeeded' && product) {
     content = (
       <Box className="product-details-container container">
         <Box className="product-details">
           <Box className="product-images">
-            <img 
-              src={product.images[choose]} 
-              alt={product.title} 
-              className="main-image" 
+            <img
+              src={product.images[choose]}
+              alt={product.title}
+              className="main-image"
               onError={handleImageError}
             />
             <Box className="thumbnail-images">
@@ -115,29 +146,45 @@ const SingleProduct = () => {
             </Box>
           </Box>
           <Box className="product-info">
-            <Typography variant="h4" component="h2" className="product-name">{product.title}</Typography>
+            <Typography variant="h4" component="h2" className="product-name">
+              {product.title}
+            </Typography>
             <Box className="product-rating">
-              {Array(Math.round(product.rating)).fill().map((_, i) => (
-                <AiFillStar key={i} />
-              ))}
-              <Typography component="span">{product.reviewsCount} Reviews</Typography>
+              {Array(Math.round(product.rating))
+                .fill()
+                .map((_, i) => (
+                  <AiFillStar key={i} />
+                ))}
+              <Typography component="span">
+                {product.reviewsCount} Reviews
+              </Typography>
             </Box>
-            <Typography component="p" className="product-description">{product.description}</Typography>
+            <Typography component="p" className="product-description">
+              {product.description}
+            </Typography>
             <Box className="product-price">
-              <Typography component="span" className="current-price">${product.price}</Typography>
+              <Typography component="span" className="current-price">
+                ${product.price}
+              </Typography>
               {product.oldPrice && product.oldPrice > product.price && (
-                <Typography component="span" className="old-price">${product.oldPrice}</Typography>
+                <Typography component="span" className="old-price">
+                  ${product.oldPrice}
+                </Typography>
               )}
             </Box>
             <Box className="product-actions">
               {quantity > 0 && (
                 <Box className="quantity-selector">
-                  <Button onClick={() => handleQuantityChange('decrement')}>-</Button>
+                  <Button onClick={() => handleQuantityChange('decrement')}>
+                    -
+                  </Button>
                   <Typography component="span">{quantity}</Typography>
-                  <Button onClick={() => handleQuantityChange('increment')}>+</Button>
+                  <Button onClick={() => handleQuantityChange('increment')}>
+                    +
+                  </Button>
                 </Box>
               )}
-              <Button 
+              <Button
                 className="add-to-cart-button"
                 onClick={() => handleAddToCart(product)}
                 variant="contained"
@@ -145,17 +192,25 @@ const SingleProduct = () => {
               >
                 {quantity > 0 ? `In Cart (${quantity})` : 'Add to Cart'}
               </Button>
-              <Button 
-                className="wishlist-button" 
+              <Button
+                className="wishlist-button"
                 onClick={() => handleToggleWishlist(product)}
-                startIcon={wishlist.some(item => item.id === product.id) ? <AiFillHeart /> : <AiOutlineHeart />}
+                startIcon={
+                  wishlist.some((item) => item.id === product.id) ? (
+                    <AiFillHeart />
+                  ) : (
+                    <AiOutlineHeart />
+                  )
+                }
               >
                 Wishlist
               </Button>
             </Box>
             <Box className="review-section">
-              <Typography variant="h5" component="h3">Write a Review</Typography>
-              <Button 
+              <Typography variant="h5" component="h3">
+                Write a Review
+              </Typography>
+              <Button
                 variant="contained"
                 color="primary"
                 onClick={handleOpenModal}
@@ -164,23 +219,45 @@ const SingleProduct = () => {
                 Add Review
               </Button>
               <Box className="reviews-list">
-                <Typography variant="h5" component="h3">Reviews</Typography>
-                {reviews.length > 0 ? reviews.map((rev, index) => (
-                  <Box key={index} className="review-item">
-                    <Box className="review-rating">
-                      {Array(rev.rating).fill().map((_, i) => (
-                        <AiFillStar key={i} />
-                      ))}
+                <Typography variant="h5" component="h3">
+                  Reviews
+                </Typography>
+                {reviews.length > 0 ? (
+                  reviews.map((rev, index) => (
+                    <Box key={index} className="review-item">
+                      <Box className="review-header">
+                        {rev.profileImage && (
+                          <img
+                            src={rev.profileImage}
+                            alt="Profile"
+                            className="review-profile-image"
+                          />
+                        )}
+                        <Typography component="span" className="review-name">
+                          {rev.name}
+                        </Typography>
+                      </Box>
+                      <Box className="review-rating">
+                        {Array(rev.rating)
+                          .fill()
+                          .map((_, i) => (
+                            <AiFillStar key={i} />
+                          ))}
+                      </Box>
+                      <Typography component="p" className="review-comment">
+                        {rev.comment}
+                      </Typography>
                     </Box>
-                    <Typography component="p" className="review-comment">{rev.comment}</Typography>
-                  </Box>
-                )) : <Typography component="p">No reviews yet.</Typography>}
+                  ))
+                ) : (
+                  <Typography component="p">No reviews yet.</Typography>
+                )}
               </Box>
             </Box>
           </Box>
         </Box>
         {showCartNotification && cartNotificationProduct && (
-          <Box 
+          <Box
             sx={{
               position: 'fixed',
               top: '20px',
@@ -197,18 +274,22 @@ const SingleProduct = () => {
               height: '100px',
               flexDirection: 'row',
               justifyContent: 'space-between',
-              textAlign: 'left'
+              textAlign: 'left',
             }}
           >
-            <img 
-              src={cartNotificationProduct.images[0]} 
-              alt={cartNotificationProduct.title} 
+            <img
+              src={cartNotificationProduct.images[0]}
+              alt={cartNotificationProduct.title}
               style={{ width: '80px', height: '80px', objectFit: 'cover' }}
               onError={handleImageError}
             />
             <Box sx={{ flex: 1, marginLeft: '16px' }}>
-              <Typography component="p" sx={{ fontWeight: 'bold' }}>Product Added to Cart</Typography>
-              <Typography component="p">{cartNotificationProduct.title}</Typography>
+              <Typography component="p" sx={{ fontWeight: 'bold' }}>
+                Product Added to Cart
+              </Typography>
+              <Typography component="p">
+                {cartNotificationProduct.title}
+              </Typography>
             </Box>
             <Button onClick={goToCart} variant="contained" color="primary">
               Go to Cart
@@ -227,7 +308,11 @@ const SingleProduct = () => {
   return (
     <Box className="single-product-page">
       {content}
-      <ModalReview open={isModalOpen} handleClose={handleCloseModal} onSubmit={handleSubmitReview} />
+      <ModalReview
+        open={isModalOpen}
+        handleClose={handleCloseModal}
+        onSubmit={handleSubmitReview}
+      />
     </Box>
   );
 };
