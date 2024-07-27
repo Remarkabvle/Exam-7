@@ -1,5 +1,5 @@
 import React from 'react'
-import Navbar from '../../components/header/Header'
+// import Navbar from '../../components/header/Header'
 import HeroSection from '../../components/hero/Hero'
 import IntroSection from '../../components/IntroSection/IntroSection'
 import Features from '../../components/features/Features'
@@ -13,9 +13,9 @@ const Home = () => {
     <div>
       <HeroSection/>
       <IntroSection/>
+      <Product/>
       <Features/>
       <PromoBanner/>
-      <Product/>
       <Articles/>
       <Newsletter/>
     </div>

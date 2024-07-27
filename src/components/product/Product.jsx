@@ -14,8 +14,12 @@ const Product = () => {
   const status = useSelector(getProductsStatus);
   const error = useSelector(getProductsError);
   const wishlist = useSelector(selectWishlist);
+  const cart = useSelector(state => state.cart.items);
 
   const [visibleProducts, setVisibleProducts] = useState(6);
+  const [showCartNotification, setShowCartNotification] = useState(false);
+  const [cartNotificationProduct, setCartNotificationProduct] = useState(null);
+  const [animationTrigger, setAnimationTrigger] = useState(false);
 
   useEffect(() => {
     if (status === 'idle') {
@@ -40,8 +44,17 @@ const Product = () => {
   };
 
   const handleAddToCart = (product) => {
-    dispatch(addToCart(product)); // Dispatch the addToCart action
-    navigate('/cart'); // Navigate to the cart page
+    dispatch(addToCart(product));
+    setCartNotificationProduct(product);
+    setAnimationTrigger(true);
+
+    setTimeout(() => {
+      setShowCartNotification(true);
+      setTimeout(() => {
+        setShowCartNotification(false);
+        setAnimationTrigger(false);
+      }, 3000); // Hide notification after 3 seconds
+    }, 500); // Delay to allow icon animation
   };
 
   let content;
@@ -72,7 +85,10 @@ const Product = () => {
           </Link>
           {product.isNew && <span className="products-section__card__image-container__badge">New</span>}
           <div className="products-section__card__icons">
-            <FaShoppingCart className="icon" onClick={() => handleAddToCart(product)} />
+            <FaShoppingCart 
+              className={`icon ${animationTrigger ? 'animate-to-notification' : ''}`} 
+              onClick={() => handleAddToCart(product)} 
+            />
             {wishlist.some(item => item.id === product.id) ? (
               <FaHeart className="icon filled" onClick={() => handleToggleWishlist(product)} />
             ) : (
@@ -106,6 +122,26 @@ const Product = () => {
       </div>
       {visibleProducts < products.length && (
         <button onClick={handleSeeMore} className="see-more-button">See More</button>
+      )}
+      {showCartNotification && cartNotificationProduct && (
+        <div 
+          className="cart-notification"
+          onClick={() => navigate('/cart')}
+        >
+          <img 
+            src={cartNotificationProduct.images[0]} 
+            alt={cartNotificationProduct.title} 
+            style={{ width: '80px', height: '80px', objectFit: 'cover' }}
+            onError={handleImageError}
+          />
+          <div className="notification-info">
+            <p>Added to cart:</p>
+            <p>{cartNotificationProduct.title}</p>
+          </div>
+          <button className="cart-notification-button">
+            Go to Cart
+          </button>
+        </div>
       )}
     </div>
   );

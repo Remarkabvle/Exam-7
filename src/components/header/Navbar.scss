@@ -8,7 +8,7 @@
   top: 0;
   width: 100%;
   z-index: 20; 
-  // box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  // box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional */
 }
 
 .navbar-logo img {
@@ -52,6 +52,7 @@
   color: #666;
   transition: color 0.3s;
 }
+
 .icont {
   font-size: 18px;
   margin-left: 20px;

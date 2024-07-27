@@ -5,6 +5,7 @@ import './Newsletter.scss';
 const Newsletter = () => {
   return (
     <div className="Newsletter">
+      <div className="Newsletter-container container">
       <div className="Newsletter__content">
         <h2 className="Newsletter__title">Join Our Newsletter</h2>
         <p className="Newsletter__desc">Sign up for deals, new products, and promotions</p>
@@ -15,6 +16,7 @@ const Newsletter = () => {
           <button type="submit" className="Newsletter__button">Signup</button>
           </div>
         </form>
+      </div>
       </div>
     </div>
   );

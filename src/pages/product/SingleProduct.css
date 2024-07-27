@@ -126,6 +126,44 @@
   cursor: pointer;
   text-align: center;
 }
+.single-product-page .product-info .review-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.single-product-page .product-info .review-section .rating-input {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.single-product-page .product-info .review-section .rating-input input {
+  width: 50px;
+}
+.single-product-page .product-info .review-section .review-input {
+  margin-top: 10px;
+}
+.single-product-page .product-info .review-section .submit-review-button {
+  margin-top: 10px;
+}
+.single-product-page .product-info .review-section .reviews-list {
+  margin-top: 20px;
+}
+.single-product-page .product-info .review-section .reviews-list .review-item {
+  margin-bottom: 20px;
+}
+.single-product-page .product-info .review-section .reviews-list .review-item .review-rating {
+  display: flex;
+  gap: 5px;
+}
+.single-product-page .product-info .review-section .reviews-list .review-item .review-rating svg {
+  color: #f5c518;
+  font-size: 24px;
+}
+.single-product-page .product-info .review-section .reviews-list .review-item .review-comment {
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  color: #6c7275;
+}
 @media (max-width: 768px) {
   .single-product-page .product-details-container {
     flex-direction: column;
@@ -133,5 +171,41 @@
   .single-product-page .product-info {
     max-width: 100%;
   }
+}
+
+.cart-notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  z-index: 1000;
+  -webkit-animation: slide-in 0.5s ease-out, slide-out 0.5s 2.5s ease-out;
+          animation: slide-in 0.5s ease-out, slide-out 0.5s 2.5s ease-out;
+}
+
+.notification-image {
+  width: 50px;
+  height: 50px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-right: 10px;
+}
+
+.notification-info {
+  flex-grow: 1;
+}
+
+.go-to-cart-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 3px;
 }
 /*# sourceMappingURL=SingleProduct.css.map */

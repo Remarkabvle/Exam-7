@@ -85,7 +85,7 @@
 }
 
 @media (max-width: 768px) {
-  .navbar-links, icon {
+  .navbar-links, .icon {
     display: none;
     flex-direction: column;
     width: 45%;

@@ -1,5 +1,7 @@
+// Navbar.js
 import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import {
   FaSearch,
   FaUser,
@@ -14,6 +16,8 @@ import logo from "../../assets/logo.svg";
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [backToTopVisible, setBackToTopVisible] = useState(false);
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const navigate = useNavigate();
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -33,6 +37,14 @@ const Navbar = () => {
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const handleUserIconClick = () => {
+    if (isAuthenticated) {
+      navigate('/admin');
+    } else {
+      navigate('/login');
+    }
   };
 
   useEffect(() => {
@@ -86,7 +98,7 @@ const Navbar = () => {
           </ul>
           <div className="navbar-icons">
             <FaSearch className="icon" />
-            <FaUser className="icon" />
+            <FaUser className="icon" onClick={handleUserIconClick} />
             <div className="icon-bag">
               <NavLink
                 to="/cart"
