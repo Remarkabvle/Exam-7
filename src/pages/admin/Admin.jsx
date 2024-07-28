@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { logout } from '../../store';
@@ -16,12 +16,6 @@ const Admin = () => {
     localStorage.removeItem('token');
     navigate('/login');
   };
-
-  useEffect(() => {
-    if (location.pathname === '/admin') {
-      navigate('/admin/create-product');
-    }
-  }, [location.pathname, navigate]);
 
   const isAdminPage = location.pathname.startsWith('/admin');
 
