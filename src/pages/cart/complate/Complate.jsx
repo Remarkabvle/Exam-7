@@ -12,6 +12,7 @@ import {
   CardMedia,
   Typography,
 } from "@mui/material";
+// import "./complete.scss"; // Assuming you have a CSS file for additional styles
 
 const Complete = () => {
   const cartData = useSelector(selectCart);
@@ -44,16 +45,16 @@ const Complete = () => {
   return (
     <div className="container">
       <Box sx={{ p: 3 }}>
-        <Typography variant="h1" gutterBottom>
+        <Typography variant="h3" gutterBottom>
           Complete!
         </Typography>
         <Box sx={{ display: "flex", alignItems: "center", mb: 3 }}>
           <Box sx={{ mr: 2, display: "flex", alignItems: "center" }}>
-            <FaCheck />
+            <FaCheck className="icon" />
             <Typography variant="body1">Shopping cart</Typography>
           </Box>
           <Box sx={{ mr: 2, display: "flex", alignItems: "center" }}>
-            <FaCheck />
+            <FaCheck className="icon" />
             <Typography variant="body1">Complete details</Typography>
           </Box>
           <Box sx={{ display: "flex", alignItems: "center" }}>
@@ -61,10 +62,10 @@ const Complete = () => {
             <Typography variant="body1">Order complete</Typography>
           </Box>
         </Box>
-        <Typography variant="h2" gutterBottom>
+        <Typography variant="h4" gutterBottom>
           Thank you! 🎉
         </Typography>
-        <Typography variant="h1" gutterBottom>
+        <Typography variant="h5" gutterBottom>
           Your order has been received
         </Typography>
         <Box sx={{ display: "flex", flexWrap: "wrap", mb: 3 }}>
@@ -73,7 +74,7 @@ const Complete = () => {
               <CardMedia
                 component="img"
                 height="140"
-                image={product.images[0]}
+                image={product.image} // Adjust according to your API response
                 alt={product.name}
               />
               <CardContent>
@@ -90,28 +91,28 @@ const Complete = () => {
             sx={{ display: "flex", justifyContent: "space-between", mb: 1 }}
           >
             <Typography variant="body1">Order code:</Typography>
-            <Typography variant="h3">#0123_45678</Typography>
+            <Typography variant="h6">#0123_45678</Typography>
           </Box>
           <Box
             component="li"
             sx={{ display: "flex", justifyContent: "space-between", mb: 1 }}
           >
             <Typography variant="body1">Date:</Typography>
-            <Typography variant="h3">July 26, 2024</Typography>
+            <Typography variant="h6">July 26, 2024</Typography>
           </Box>
           <Box
             component="li"
             sx={{ display: "flex", justifyContent: "space-between", mb: 1 }}
           >
             <Typography variant="body1">Total:</Typography>
-            <Typography variant="h3">{totalAmount}</Typography>
+            <Typography variant="h6">${totalAmount}</Typography>
           </Box>
           <Box
             component="li"
             sx={{ display: "flex", justifyContent: "space-between", mb: 1 }}
           >
             <Typography variant="body1">Payment method:</Typography>
-            <Typography variant="h3">{method}</Typography>
+            <Typography variant="h6">{method}</Typography>
           </Box>
         </Box>
         <Button onClick={handleComplete} variant="contained" color="primary">
