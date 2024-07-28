@@ -138,4 +138,26 @@
 .shopping-cart__summary .cart-summary__checkout-button:hover {
   background-color: #333;
 }
+
+@media (max-width: 768px) {
+  .shopping-cart__container {
+    flex-direction: column;
+  }
+  .shopping-cart__summary {
+    margin-left: 0;
+    margin-top: 20px;
+  }
+  .shopping-cart__item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .shopping-cart__item .shopping-cart__info {
+    align-items: center;
+  }
+  .shopping-cart__item__image img {
+    width: 150px;
+    height: 150px;
+  }
+}
 /*# sourceMappingURL=Cart.css.map */

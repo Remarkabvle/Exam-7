@@ -20,6 +20,7 @@ import ManageCategory from './pages/admin/manage-category/ManageCategory';
 import CreateCategory from './pages/admin/create-category/CreateCategory';
 import ManageProduct from './pages/admin/manage-product/ManageProduct';
 import CreateProduct from './pages/admin/create-product/CreateProduct';
+import Complete from './pages/cart/complate/Complate';
 // import CreateProduct from './pages/admin/CreateProduct';
 // import ManageProduct from './pages/admin/ManageProduct';
 // import CreateCategory from './pages/admin/CreateCategory';
@@ -44,6 +45,8 @@ const AppContent = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />
+        <Route path="/complete" element={<Complete />} />
+
         <Route path="/product/:productId" element={<SingleProduct />} />
         <Route
           path="/admin"

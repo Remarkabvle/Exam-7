@@ -239,4 +239,82 @@
   font-size: 18px;
   margin: 0;
 }
+@media (max-width: 768px) {
+  .checkout-container .checkout-left,
+.checkout-container .checkout-right {
+    flex: 1 1 100%;
+  }
+  .checkout-container .checkout-left-middle-info,
+.checkout-container .checkout-left-top-info {
+    flex-direction: column;
+  }
+  .checkout-container .checkout-left-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+@media (max-width: 480px) {
+  .checkout-container {
+    padding: 10px;
+  }
+  .checkout-container .checkout-left,
+.checkout-container .checkout-right {
+    padding: 10px;
+  }
+  .checkout-container .checkout-left-top h2,
+.checkout-container .checkout-left-middle h2,
+.checkout-container .checkout-left-bottom h2 {
+    font-size: 20px;
+  }
+  .checkout-container .checkout-left-btn {
+    font-size: 14px;
+  }
+  .checkout-container .checkout-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .checkout-container .checkout-card .checkout-card-left {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .checkout-container .checkout-card .checkout-card-left .checkout-card-info-btns {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .checkout-container .checkout-card .checkout-card-left .checkout-card-info-btns button {
+    flex: 1;
+  }
+  .checkout-container .checkout-card .checkout-card-right {
+    align-self: flex-end;
+  }
+  .checkout-container .checkout-bottom-form {
+    flex-direction: column;
+    gap: 5px;
+  }
+  .checkout-container .checkout-bottom-form input {
+    width: 100%;
+  }
+  .checkout-container .checkout-bottom-form button {
+    width: 100%;
+  }
+}
+
+.checkout-left-bottom-btn {
+  padding: 12px 24px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.checkout-left-bottom-btn:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+.checkout-left-bottom-btn:active {
+  background-color: #004085;
+  transform: translateY(0);
+}
 /*# sourceMappingURL=Checkout.css.map */

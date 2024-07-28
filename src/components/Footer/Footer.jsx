@@ -1,8 +1,14 @@
 import React from "react";
-import "./Footer.scss";
+import { useLocation } from "react-router-dom";
 import { FaInstagram, FaFacebook, FaYoutube } from "react-icons/fa";
+import "./Footer.scss";
 
 const Footer = () => {
+  const location = useLocation();
+  const isAdminPage = location.pathname.startsWith('/admin');
+
+  if (isAdminPage) return null;
+
   return (
     <footer className="footer">
       <div className="container">

