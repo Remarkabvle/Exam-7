@@ -1,10 +1,17 @@
 import React, { useEffect } from "react";
-// import "./complete.scss";
-import { FaCheck } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteAllCart, selectCart } from "../../../features/cart/cartSlice";
 import { useNavigate } from "react-router-dom";
 import { memo } from "react";
+import { FaCheck } from "react-icons/fa";
+import {
+  Box,
+  Button,
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+} from "@mui/material";
 
 const Complete = () => {
   const cartData = useSelector(selectCart);
@@ -32,62 +39,73 @@ const Complete = () => {
   }, []);
 
   return (
-    <div className="complete">
-      <div className="complete__header">
-        <h1>Complete !</h1>
-        <div className="complete__steps">
-          <div className="complete__step done__step">
-            <span>
-              <FaCheck />
-            </span>
-            <p>Shopping cart</p>
-          </div>
-          <div className="complete__step done__step">
-            <span>
-              <FaCheck />
-            </span>
-            <p>Complete details</p>
-          </div>
-          <div className="complete__step active__step">
-            <span>3</span>
-            <p>Order complete</p>
-          </div>
-        </div>
-      </div>
-      <div className="complete__body">
-        <h2>Thank you! 🎉</h2>
-        <h1>Your order has been received</h1>
-        <div className="complete__body__cards">
-          {cartData?.map((product) => (
-            <div key={product.id} className="complete__body__cards__card">
-              <img src={product.image} alt="" />
-              <p>{product.quantity}</p>
-            </div>
-          ))}
-        </div>
-        <ul className="complete__body__infos">
-          <li>
-            <p>Order code:</p>
-            <h3>#0123_45678</h3>
-          </li>
-          <li>
-            <p>Date:</p>
-            <h3>July 26, 2024</h3>
-          </li>
-          <li>
-            <p>Total:</p>
-            <h3>{totalAmount}</h3>
-          </li>
-          <li>
-            <p>Payment method:</p>
-            <h3>{method}</h3>
-          </li>
-        </ul>
-        <button onClick={handleComplete} className="complete__body__btn">
-          Purchase history
-        </button>
-      </div>
-    </div>
+    <Box sx={{ p: 3 }}>
+      <Typography variant="h1" gutterBottom>
+        Complete!
+      </Typography>
+      <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
+        <Box sx={{ mr: 2, display: 'flex', alignItems: 'center' }}>
+          <FaCheck />
+          <Typography variant="body1">Shopping cart</Typography>
+        </Box>
+        <Box sx={{ mr: 2, display: 'flex', alignItems: 'center' }}>
+          <FaCheck />
+          <Typography variant="body1">Complete details</Typography>
+        </Box>
+        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          <Typography variant="body1">3</Typography>
+          <Typography variant="body1">Order complete</Typography>
+        </Box>
+      </Box>
+      <Typography variant="h2" gutterBottom>
+        Thank you! 🎉
+      </Typography>
+      <Typography variant="h1" gutterBottom>
+        Your order has been received
+      </Typography>
+      <Box sx={{ display: 'flex', flexWrap: 'wrap', mb: 3 }}>
+        {cartData.map((product) => (
+          <Card key={product.id} sx={{ maxWidth: 200, m: 1 }}>
+            <CardMedia
+              component="img"
+              height="140"
+              image={product.images[0]}
+              alt={product.name}
+            />
+            <CardContent>
+              <Typography variant="body2" color="textSecondary">
+                {product.quantity}
+              </Typography>
+            </CardContent>
+          </Card>
+        ))}
+      </Box>
+      <Box component="ul" sx={{ listStyle: 'none', p: 0, mb: 3 }}>
+        <Box component="li" sx={{ display: 'flex', justifyContent: 'space-between', mb: 1 }}>
+          <Typography variant="body1">Order code:</Typography>
+          <Typography variant="h3">#0123_45678</Typography>
+        </Box>
+        <Box component="li" sx={{ display: 'flex', justifyContent: 'space-between', mb: 1 }}>
+          <Typography variant="body1">Date:</Typography>
+          <Typography variant="h3">July 26, 2024</Typography>
+        </Box>
+        <Box component="li" sx={{ display: 'flex', justifyContent: 'space-between', mb: 1 }}>
+          <Typography variant="body1">Total:</Typography>
+          <Typography variant="h3">{totalAmount}</Typography>
+        </Box>
+        <Box component="li" sx={{ display: 'flex', justifyContent: 'space-between', mb: 1 }}>
+          <Typography variant="body1">Payment method:</Typography>
+          <Typography variant="h3">{method}</Typography>
+        </Box>
+      </Box>
+      <Button
+        onClick={handleComplete}
+        variant="contained"
+        color="primary"
+      >
+        Purchase history
+      </Button>
+    </Box>
   );
 };
 
